@@ -1,65 +1,373 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>JavaScript Camera</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Add money to ZapCash</title>
+    <!-- Import The Custome StyleSheet -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Import FontAwasome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/material.min.css">
+    <script src="./assets/js/material.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+
+            font-family: 'Bevan', cursive;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-section .login {
+            font-size: 1rem;
+            color: #0070ba;
+            font-weight: 700;
+        }
+
+        .header-section a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .header-section img {
+            height: 30px
+        }
+
+        .content-section {
+            margin-top: 2rem;
+        }
+
+        .content-section h1,
+        .content-section h3 {
+            line-height: 2;
+            font-weight: 600;
+        }
+
+        .content-section h1 {
+            font-size: 1.8rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.15rem;
+        }
+
+        .content-section form {
+            margin: 1.5rem 0;
+        }
+
+        .content-section form input {
+            border: 1px gray solid;
+            padding: .8rem;
+            font-weight: 600;
+            /* color: darkgray; */
+            width: 100%;
+            border-radius: 3px;
+            font-size: 1rem;
+            /* padding-left: 50px; */
+        }
+
+        .input-cont {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-cont .code {
+            position: absolute;
+            left: 10px;
+            top: 2px;
+            padding: .8rem;
+            font-weight: 700;
+        }
+
+        .terms {
+            line-height: 1.5;
+            font-weight: 600;
+            font-size: .95rem;
+            margin-top: 2rem
+        }
+
+        .submit-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .submit-section button {
+            border: none;
+            min-width: 12rem;
+            background-color: #0070ba;
+            color: white;
+            padding: .6875rem 1.4375rem;
+            border-radius: 1.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            display: block;
+            width: 100%;
+        }
+
+        .submit-section button:hover {
+            background-color: #003087;
+        }
+
+        .validation-text {
+            color: red;
+            font-size: 12px;
+            display: none;
+            margin-top: 9px;
+        }
+
+        .red-border {
+            border: 2px solid red !important
+        }
+
+        .pass-icon {
+            position: absolute;
+            top: 15px;
+            right: 4px;
+        }
+
+        .content-widget {
+            width: 400px;
+            margin: auto;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .content-widget {
+                width: 95%;
+            }
+        }
+
+        .content-widget hr {
+            border-top: 1px gray solid;
+            margin-bottom: 1rem;
+        }
+
+        .content-widget hr.dotted {
+            border-top: 1px gray dotted;
+            margin: 0 !important;
+        }
+
+        ul.banks {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            list-style: none;
+            margin-top: 1.5rem !important;
+        }
+
+        li.bank-item {
+            display: flex;
+            align-items: center;
+            column-gap: .75rem;
+            justify-content: flex-start;
+        }
+
+        li.bank-item input {
+            height: 25px;
+            width: 25px;
+        }
+
+        li.bank-item .sub-content {
+            display: flex;
+            column-gap: .75rem;
+            align-items: center;
+        }
+
+        li.bank-item .house {
+            background: #fcfcfc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+            color: gray;
+            font-size: 1rem;
+        }
+
+        li.bank-item .bank-name label {
+            font-weight: 500;
+            line-height: 1.38;
+            font-size: 1.2rem;
+            color: #000
+        }
+
+        li.bank-item .bank-name p {
+            font-weight: 300;
+            font-size: .9rem;
+            text-align: left;
+        }
+
+        .add a {
+            color: #0070ba;
+            font-size: 1.5rem;
+            display: flex;
+            column-gap: 1.5rem;
+            align-items: center;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .add a:hover {
+            color: #003087;
+            text-decoration: none;
+        }
+
+        .add a .add-icon {
+            border: 2px #0070ba solid;
+            padding: 4px 7px;
+            border-radius: 5px;
+            line-height: 24px;
+        }
+
+        .add label {
+            color: #0070ba;
+            font-size: 1.2rem;
+        }
+
+        a.next {
+            background-color: #0070ba;
+            color: white;
+            width: 100%;
+            border-radius: 100px;
+        }
+
+        .radio {
+            position: relative;
+        }
+
+        .days {
+            font-size: .75rem;
+            font-weight: 700;
+            color: #000;
+            text-align: left;
+            line-height: 5px;
+            margin-bottom: 6px !important;
+        }
+
+        p.caution {
+            color: #000;
+            font-weight: .8rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .take-btn {
+            margin-top: 1.5rem;
+            display: flex;
+        }
+
+        .take-btn button {
+            border: none;
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.3rem;
+            color: white;
+            background-color: #0070ba;
+        }
+
+        .take-btn button:hover {
+            background-color: #003087;
+        }
+
+        .photo-area {
+            margin: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-area .photo-widget {
+            width: 300px;
+            height: 300px;
+            background-color: #ededed;
+        }
+
+        .submit-btn {
+            margin-top: 1.5rem;
+            display: flex;
+        }
+
+        .submit-btn button {
+            border: none;
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.3rem;
+            color: white;
+            background-color: darkred;
+        }
+
+        .submit-btn button:hover {
+            background-color: darkred;
+        }
+
+        #id_type {
+            background: #eee;
+            border: none;
+            border-bottom: 1px gray solid;
+            padding: .4rem 1.25rem;
+            font-size: 1.3rem;
+        }
+
+        button {
+            cursor: pointer !important;
+        }
+    </style>
 </head>
 
 <body>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-four-fifths">
-          <h1 class="title">
-            JavaScript Camera
-          </h1>
-          <video autoplay id="video"></video>
-          <button class="button is-hidden" id="btnPlay">
-            <span class="icon is-small">
-              <i class="fas fa-play"></i>
-            </span>
-          </button>
-          <button class="button" id="btnPause">
-            <span class="icon is-small">
-              <i class="fas fa-pause"></i>
-            </span>
-          </button>
-          <button class="button is-success" id="btnScreenshot">
-            <span class="icon is-small">
-              <i class="fas fa-camera"></i>
-            </span>
-          </button>
-          <button class="button" id="btnChangeCamera">
-            <span class="icon">
-              <i class="fas fa-sync-alt"></i>
-            </span>
-            <span>Switch camera</span>
-          </button>
-        </div>
-        <div class="column">
-          <h2 class="title">Screenshots</h2>
-          <div id="screenshots"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="Confirm-Phone" id="Confirm-Phone">
+        <div class="header-section">
+            <a href="javascript: history.back()"><span class="fa fa-long-arrow-left" style="margin-top: -10px; padding: 0; padding-left: 10px;"></span></a>
 
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        By <a href="https://www.webdevdrops.com/">Douglas Matoso</a> | <a
-          href="https://github.com/doug2k1/javascript-camera">Source code</a>
-      </p>
-    </div>
-  </footer>
+            <div class="img">
+                <img src="./assets/images/Logo.svg" alt="Logo">
+            </div>
+            <a href="#"></a>
 
-  <canvas class="is-hidden" id="canvas"></canvas>
-  <script src="script.js"></script>
+        </div>
+        <div class="content-section">
+            <select id="id_type" name="id_type" onchange="changeTypeValue()">
+                <option value="">Choose Type</option>
+                <option value="DL">Driver License</option>
+                <option value="identcard">Identification Card</option>
+                <option value="passport">Passport</option>
+            </select>
+            <div class="take-btn">
+                <input  type="file" capture="environment">
+                <input  type="file" >
+            </div>
+            <div class="photo-area">
+                <div class="photo-widget"></div>
+            </div>
+            <div class="submit-btn">
+                <button>Submit in your picture</button>
+            </div>
+        </div>
+    </section>
+    <footer class="Footer" id="Footer">
+        <p>©2022 ZapCash LTD. All rights reserved.</p>
+        <a href="https://zapcashltd.com/privacy.php">Privacy </a> <a href="https://zapcashltd.com/tos.php">TOS</a> <a href="https://zapcashltd.com/contactus.php">Contact</a>
+    </footer>
+
+    <!-- Import The ScriptSheet -->
+    <script src="./assets/js/script.js"></script>
+
+
 </body>
+
 
 </html>
