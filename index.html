@@ -1,4 +1,8 @@
+<?php
+include('cookie.php');
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,96 +55,7 @@
             margin-top: 2rem;
         }
 
-        .content-section h1,
-        .content-section h3 {
-            line-height: 2;
-            font-weight: 600;
-        }
-
-        .content-section h1 {
-            font-size: 1.8rem;
-        }
-
-        .content-section h3 {
-            font-size: 1.15rem;
-        }
-
-        .content-section form {
-            margin: 1.5rem 0;
-        }
-
-        .content-section form input {
-            border: 1px gray solid;
-            padding: .8rem;
-            font-weight: 600;
-            /* color: darkgray; */
-            width: 100%;
-            border-radius: 3px;
-            font-size: 1rem;
-            /* padding-left: 50px; */
-        }
-
-        .input-cont {
-            position: relative;
-            margin-bottom: 15px;
-        }
-
-        .input-cont .code {
-            position: absolute;
-            left: 10px;
-            top: 2px;
-            padding: .8rem;
-            font-weight: 700;
-        }
-
-        .terms {
-            line-height: 1.5;
-            font-weight: 600;
-            font-size: .95rem;
-            margin-top: 2rem
-        }
-
-        .submit-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 2rem 0;
-        }
-
-        .submit-section button {
-            border: none;
-            min-width: 12rem;
-            background-color: #0070ba;
-            color: white;
-            padding: .6875rem 1.4375rem;
-            border-radius: 1.5rem;
-            font-weight: 700;
-            font-size: 1rem;
-            display: block;
-            width: 100%;
-        }
-
-        .submit-section button:hover {
-            background-color: #003087;
-        }
-
-        .validation-text {
-            color: red;
-            font-size: 12px;
-            display: none;
-            margin-top: 9px;
-        }
-
-        .red-border {
-            border: 2px solid red !important
-        }
-
-        .pass-icon {
-            position: absolute;
-            top: 15px;
-            right: 4px;
-        }
-
+        
         .content-widget {
             width: 400px;
             margin: auto;
@@ -162,107 +77,6 @@
             margin: 0 !important;
         }
 
-        ul.banks {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            list-style: none;
-            margin-top: 1.5rem !important;
-        }
-
-        li.bank-item {
-            display: flex;
-            align-items: center;
-            column-gap: .75rem;
-            justify-content: flex-start;
-        }
-
-        li.bank-item input {
-            height: 25px;
-            width: 25px;
-        }
-
-        li.bank-item .sub-content {
-            display: flex;
-            column-gap: .75rem;
-            align-items: center;
-        }
-
-        li.bank-item .house {
-            background: #fcfcfc;
-            padding: 5px 10px;
-            border-radius: 5px;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-            color: gray;
-            font-size: 1rem;
-        }
-
-        li.bank-item .bank-name label {
-            font-weight: 500;
-            line-height: 1.38;
-            font-size: 1.2rem;
-            color: #000
-        }
-
-        li.bank-item .bank-name p {
-            font-weight: 300;
-            font-size: .9rem;
-            text-align: left;
-        }
-
-        .add a {
-            color: #0070ba;
-            font-size: 1.5rem;
-            display: flex;
-            column-gap: 1.5rem;
-            align-items: center;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .add a:hover {
-            color: #003087;
-            text-decoration: none;
-        }
-
-        .add a .add-icon {
-            border: 2px #0070ba solid;
-            padding: 4px 7px;
-            border-radius: 5px;
-            line-height: 24px;
-        }
-
-        .add label {
-            color: #0070ba;
-            font-size: 1.2rem;
-        }
-
-        a.next {
-            background-color: #0070ba;
-            color: white;
-            width: 100%;
-            border-radius: 100px;
-        }
-
-        .radio {
-            position: relative;
-        }
-
-        .days {
-            font-size: .75rem;
-            font-weight: 700;
-            color: #000;
-            text-align: left;
-            line-height: 5px;
-            margin-bottom: 6px !important;
-        }
-
-        p.caution {
-            color: #000;
-            font-weight: .8rem;
-            text-align: left;
-            margin-top: 2rem;
-        }
 
         .take-btn {
             margin-top: 1.5rem;
@@ -296,10 +110,6 @@
             height: 300px;
             background-color: #ededed;
         }
-        #output{
-            width: 300px;
-            height: 300px;
-        }
 
         .submit-btn {
             margin-top: 1.5rem;
@@ -330,6 +140,15 @@
         button {
             cursor: pointer !important;
         }
+        .take-title{
+            line-height: 1.25;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        #output{
+            width: 300px;
+            height: 300px;
+        }
     </style>
 </head>
 
@@ -345,14 +164,10 @@
 
         </div>
         <div class="content-section">
-            <select id="id_type" name="id_type" onchange="changeTypeValue()">
-                <option value="">Choose Type</option>
-                <option value="DL">Driver License</option>
-                <option value="identcard">Identification Card</option>
-                <option value="passport">Passport</option>
-            </select>
+            <h3 class="take-title">We need a clear picture of your face. Step 1 a PROMPT will appear on your phone.
+			Put picture of the prompt here.  PRESS THE ALLOW Option.  Step 2 Ok now Press the button to activate the camera.  and take  picture of your face</h3>
             <div class="take-btn">
-                <input title="Take photo Click Here" id="inputimg" onchange="loadFile(event)"  type="file" capture="camera" style="display:none;">
+                <input id="inputimg" onchange="loadFile(event)"  type="file" accept="image/*" capture="camera" style="display:none;">
                 <label for="inputimg">Click me to upload image</label>
             </div>
             <div class="photo-area">
